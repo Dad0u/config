@@ -13,7 +13,14 @@ alias f=fuck
 
 #PROMPT='%B%m%~%b$(git_super_status) %# '
 #PROMPT="%{[36;1m%}%T %{[31m%}%n%{[33m%}@%{[37m%}%m %{[32m%}%~ %{[33m%}%#%{[0m%} "
-PROMPT='%{[36;1m%}%T %{[31m%}%n%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+#PROMPT='%{[36;1m%}%T %{[31m%}%n%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+
+if [ $USER = "vic" ]
+then
+  PROMPT='%{[36;1m%}%T 🦄@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+else
+  PROMPT='%{[36;1m%}%T %{[31m%}%n%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+fi
 
 # To allow overwriting with redirections
 setopt clobber
