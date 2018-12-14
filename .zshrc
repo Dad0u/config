@@ -1,9 +1,3 @@
-##CUDA
-export CUDA_HOME=/usr/local/cuda
-export LD_LIBRARY_PATH=${CUDA_HOME}/lib64
-
-export PATH=${CUDA_HOME}/bin:${PATH}
-
 # Git prompt
 source ~/projects/zsh-git-prompt/zshrc.sh
 
@@ -39,66 +33,77 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 #alias ipy="ipython3 --profile=crappy"
 #alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-alias ipy="python /usr/local/bin/ipython --profile=crappy"
-alias ipy3="python3 /usr/local/bin/ipython --profile=crappy"
+alias ipy="python /usr/bin/ipython"
+alias ipy3="python3 /usr/bin/ipython"
 
-#alias ap='sudo apt -o Acquire::http::Proxy="http://cache.ec-lille.fr:3128"'
-alias ap='sudo apt'
-alias apud='ap update'
-alias apug='ap upgrade'
-alias apudg='apud && apug'
-alias api='ap install'
 alias ":q"="exit"
+
+alias ls='ls --color'
+alias ll='ls -l'
+alias lla='ls -la'
+alias la='ls -a'
+
+alias LS='sl'
+alias l='sl'
+
+alias du='du -h'
+alias df='df -h'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
 
 alias py='python'
 alias py3='python3'
 
-export http_proxy="http://cache.centralelille.fr:3128"
-export https_proxy="https://cache.centralelille.fr:3128"
+alias c='clear'
 
-source ~/projects/zsh-background-notify/bgnotify.plugin.zsh
+# Correspondance touches-fonction
+bindkey ''    beginning-of-line       # Home
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[H"  beginning-of-line
+bindkey ''    end-of-line             # End
+bindkey "\e[4~" end-of-line
+bindkey "\e[F"  end-of-line
+bindkey ''    delete-char             # Del
+bindkey '[3~' delete-char
+bindkey '[2~' overwrite-mode          # Insert
+bindkey '[5~' history-search-backward # PgUp
+bindkey '[6~' history-search-forward  # PgDn
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
-# virtualenv and virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+# Prise en charge des touches [début], [fin] et autres
+typeset -A key
 
-#export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.6/site-packages
+key[Home]=${terminfo[khome]}
+key[End]=${terminfo[kend]}
+key[Insert]=${terminfo[kich1]}
+key[Delete]=${terminfo[kdch1]}
+key[Up]=${terminfo[kcuu1]}
+key[Down]=${terminfo[kcud1]}
+key[Left]=${terminfo[kcub1]}
+key[Right]=${terminfo[kcuf1]}
+key[PageUp]=${terminfo[kpp]}
+key[PageDown]=${terminfo[knp]}
+
+[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
+[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
+[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
+[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
+[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
+[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
+[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 
 
+# Quand l'utilisateur commence sa commande par '!' pour faire de la
+# complétion historique, il n'exécute pas la commande immédiatement
+# mais il écrit la commande dans le prompt
+setopt hist_verify
 
-# added by Anaconda3 5.3.0 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-#
-#__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/vic/projects/anaconda/bin/conda' shell.bash hook 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    \eval "$__conda_setup"
-#else
-#    if [ -f "/home/vic/projects/anaconda/etc/profile.d/conda.sh" ]; then
-#        . "/home/vic/projects/anaconda/etc/profile.d/conda.sh"
-#        CONDA_CHANGEPS1=false conda activate base
-#    else
-#        \export PATH="$PATH:/home/vic/projects/anaconda/bin"
-#    fi
-#fi
-#unset __conda_setup
+# Nombre d'entrées dans l'historique
+export HISTORY=1000
+export SAVEHIST=1000
 
-# <<< conda init <<<
-
-init_conda () {
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/vic/projects/anaconda/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
-else
-    if [ -f "/home/vic/projects/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/home/vic/projects/anaconda/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="$PATH:/home/vic/projects/anaconda/bin"
-    fi
-fi
-unset __conda_setup
-}
-
-alias spyder='init_conda && spyder'
+# Fichier où est stocké l'historique
+export HISTFILE=$HOME/.history
