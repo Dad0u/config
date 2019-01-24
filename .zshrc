@@ -1,5 +1,6 @@
 # Git prompt
 source ~/projects/zsh-git-prompt/zshrc.sh
+export LANG=fr_FR.UTF-8
 
 # thefuck
 eval "$(thefuck --alias fuck)"
@@ -11,11 +12,22 @@ alias f=fuck
 
 if [ $USER = "vic" ]
 then
-  PROMPT='%{[36;1m%}%T 🦄@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+  _USERNAME=🦄
 else
-  PROMPT='%{[36;1m%}%T %{[31m%}%n%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+  _USERNAME="%n"
 fi
 
+issue=`cat /etc/issue`
+
+if [[ $issue == *Manjaro* || $issue == *Arch* ]];
+then
+  _ATCOL=[33m%
+else
+  _ATCOL=[34m%
+fi
+
+#PROMPT='%{[36;1m%}%T %{[31m%}$_USERNAME%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+PROMPT='%{[36;1m%}%T %{[31m%}$_USERNAME%{$_ATCOL}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
 # To allow overwriting with redirections
 setopt clobber
 
