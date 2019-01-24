@@ -21,7 +21,7 @@ issue=`cat /etc/issue`
 
 if [[ $issue == *Manjaro* || $issue == *Arch* ]];
 then
-  _ATCOL=[33m%
+  _ATCOL=[35m%
 else
   _ATCOL=[34m%
 fi
