@@ -50,7 +50,7 @@ alias ipy3="python3 /usr/bin/ipython"
 
 alias ":q"="exit"
 
-alias ls='ls --color'
+alias ls='ls -h --color'
 alias ll='ls -l'
 alias lla='ls -la'
 alias la='ls -a'
