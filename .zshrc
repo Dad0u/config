@@ -30,8 +30,8 @@ else
   _ATCOL=[34m%
 fi
 
-#PROMPT='%{[36;1m%}%T %{[31m%}$_USERNAME%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
-PROMPT='%{[36;1m%}%T %{[31m%}$_USERNAME%{$_ATCOL}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+#PROMPT="%{[36;1m%}%T %{[31m%}$_USERNAME%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} "
+PROMPT="%{[36;1m%}%T %{[31m%}$_USERNAME%{$_ATCOL}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} "
 # To allow overwriting with redirections
 setopt clobber
 
