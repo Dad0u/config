@@ -1,3 +1,7 @@
+#if [ -z "$STY" ] then
+#  screen -q
+#fi
+
 # Git prompt
 source ~/projects/zsh-git-prompt/zshrc.sh
 export LANG=fr_FR.UTF-8
