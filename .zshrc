@@ -49,10 +49,8 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
-#alias ipy="ipython3 --profile=crappy"
-#alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-alias ipy="python /usr/bin/ipython"
-alias ipy3="python3 /usr/bin/ipython"
+alias ipy="ipython"
+alias ipy3="ipython3"
 
 alias ":q"="exit"
 
@@ -66,9 +64,9 @@ alias l='sl'
 
 alias du='du -h'
 alias df='df -h'
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
+#alias cp='cp -i'
+#alias mv='mv -i'
+#alias rm='rm -i'
 
 alias py='python'
 alias py3='python3'
