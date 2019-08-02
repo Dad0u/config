@@ -1,4 +1,4 @@
-#if [ -z "$STY" ] then
+#if [ -z "$STY" ] ; then
 #  screen -q
 #fi
 
