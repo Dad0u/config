@@ -4,7 +4,9 @@
 
 # Git prompt
 source ~/projects/zsh-git-prompt/zshrc.sh
+
 export LANG=fr_FR.UTF-8
+export PATH="$HOME/bin":$PATH
 
 # thefuck
 eval "$(thefuck --alias fuck)"
