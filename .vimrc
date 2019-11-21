@@ -10,10 +10,10 @@ set smarttab
 set background=light
 set wrap lbr
 " To move one line when lines are wrapped
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
+" nnoremap <Down> gj
+" nnoremap <Up> gk
+" vnoremap <Down> gj
+" vnoremap <Up> gk
 "inoremap <Down> <C-o>gj
 "inoremap <Up> <C-o>gk
 
@@ -77,11 +77,26 @@ endfunction
 
 nnoremap <C-h> :call Toggle_hex()<CR>
 
-nnoremap <C-n> :lnext<CR>
-nnoremap <C-b> :lprevious<CR>
+nnoremap <C-x> :lnext<CR>
+nnoremap <C-w> :lprevious<CR>
 nnoremap <C-j> :ALEToggle<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
 "let g:ale_echo_cursor = 0
+
+" Remember folds and repoen them
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
+
+" Slime : to paste data in a screen
+let g:slime_target = "screen"
+let g:slime_default_config = {"sessionname": "ipy3", "windowname": "0"}
+" For vim-slime to paste correctly in IPython
+let g:slime_python_ipython = 1
+
+
+noremap <C-Down> /##<CR>
+noremap <C-Up> ?##<CR>

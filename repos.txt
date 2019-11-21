@@ -1,2 +1,4 @@
 https://github.com/tpope/vim-pathogen.git
 https://github.com/olivierverdier/zsh-git-prompt.git
+https://github.com/jpalardy/vim-slime.git
+https://github.com/w0rp/ale.git

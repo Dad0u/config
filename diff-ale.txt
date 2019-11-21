@@ -1,0 +1,13 @@
+diff --git a/ale_linters/python/flake8.vim b/ale_linters/python/flake8.vim
+index 9dcdacc6..0cf61531 100644
+--- a/ale_linters/python/flake8.vim
++++ b/ale_linters/python/flake8.vim
+@@ -2,7 +2,7 @@
+ " Description: flake8 for python files
+ 
+ call ale#Set('python_flake8_executable', 'flake8')
+-call ale#Set('python_flake8_options', '')
++call ale#Set('python_flake8_options', '--ignore E111,E114,E121,E122,E125,E127,E128,E225,E226,E228,E231,E261,E265,E731,E741,E742,E743')
+ call ale#Set('python_flake8_use_global', get(g:, 'ale_use_global_executables', 0))
+ call ale#Set('python_flake8_change_directory', 1)
+ call ale#Set('python_flake8_auto_pipenv', 0)
