@@ -78,7 +78,7 @@ endfunction
 nnoremap <C-h> :call Toggle_hex()<CR>
 
 nnoremap <C-x> :lnext<CR>
-nnoremap <C-w> :lprevious<CR>
+nnoremap <C-s> :lprevious<CR>
 nnoremap <C-j> :ALEToggle<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
@@ -97,6 +97,11 @@ let g:slime_default_config = {"sessionname": "ipy3", "windowname": "0"}
 " For vim-slime to paste correctly in IPython
 let g:slime_python_ipython = 1
 
+" To select blocks easily (delimited by ##)
+noremap <C-Down> /^##<CR>
+noremap <C-Up> ?^##<CR>
 
-noremap <C-Down> /##<CR>
-noremap <C-Up> ?##<CR>
+" To execute the current block
+map <C-c><C-x> ms/##<CR>VN<C-c><C-c>
+" To execute the whole file
+map <C-c><C-w> msggVG<C-c><C-c>
