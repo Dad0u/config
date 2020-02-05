@@ -134,3 +134,52 @@ zstyle ':completion:*' use-compctl false
 
 autoload -U compinit
 compinit
+
+command_not_found_handler () {
+    local INSULTS=(
+        "Boooo!"
+        "Don't you know anything?"
+        "RTFM!"
+        "Hahaha, n00b!"
+        "Wow! That was impressively wrong!"
+        "What are you doing??"
+        "Pathetic"
+        "The worst one today!"
+        "n00b alert!"
+        "lol"
+        "u suk"
+        "lol... plz"
+        "plz uninstall"
+        "And the Darwin Award goes to.... ${USER}!"
+        "ERROR_INCOMPETENT_USER"
+        "Incompetence is also competence"
+        "Bad."
+        "Fake it till you make it!"
+        "What is this...? Amateur hour!?"
+        "Come on! You can do it!"
+        "Nice try."
+        "What if... you type an actual command the next time!"
+        "What if I told you... it is possible to type valid commands."
+        "Y u no speak computer???"
+        "This is not Windows"
+        "Perhaps you should leave the command line alone..."
+        "Please step away from the keyboard!"
+        "error code: 1D10T"
+        "Pro tip: type a valid command!"
+        "Go outside."
+        "This is not a search engine."
+        "So, I'm just going to go ahead and run rm -rf / for you."
+        "Why are you so stupid?!"
+        "Perhaps computers is not for you..."
+        "Why are you doing this to me?!"
+        "Don't you have anything better to do?!"
+        "I am _seriously_ considering 'rm -rf /'-ing myself..."
+        "This is why nobody likes you."
+        "Are you even trying?!"
+    )
+
+    printf "$(tput bold)$(tput setaf 1)$(shuf -n 1 -e "${INSULTS[@]}")$(tput sgr0)"
+    echo ""
+    # Return the exit code normally returned on invalid command
+    return 127
+}
