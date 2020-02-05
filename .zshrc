@@ -73,6 +73,8 @@ alias py3='python3'
 
 alias c='clear'
 
+alias dfc='dfc -p -/dev/loop,tmpfs,udev'
+
 # Correspondance touches-fonction
 bindkey ''    beginning-of-line       # Home
 bindkey "\e[1~" beginning-of-line
