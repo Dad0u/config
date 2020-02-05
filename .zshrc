@@ -178,8 +178,11 @@ command_not_found_handler () {
         "Are you even trying?!"
     )
 
+    /usr/lib/command-not-found --no-failure-msg -- ${1+"$1"}
     printf "$(tput bold)$(tput setaf 1)$(shuf -n 1 -e "${INSULTS[@]}")$(tput sgr0)"
     echo ""
     # Return the exit code normally returned on invalid command
     return 127
 }
+
+source /etc/zsh_command_not_found
