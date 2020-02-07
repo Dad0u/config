@@ -50,7 +50,8 @@ bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
 alias ipy="ipython"
-alias ipy3="ipython3"
+alias ipy3="ipython3 --profile=dev"
+alias sipy3="screen -S ipy3 ipy3"
 
 alias ":q"="exit"
 
