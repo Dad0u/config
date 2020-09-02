@@ -1,205 +1,107 @@
-#if [ -z "$STY" ] ; then
-#  screen -q
-#fi
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Git prompt
-source ~/projects/zsh-git-prompt/zshrc.sh
+# Path to your oh-my-zsh installation.
+export ZSH="/home/vic/.oh-my-zsh"
 
-export LANG=fr_FR.UTF-8
-export PATH="$HOME/bin":$PATH
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="dadou"
 
-# thefuck
-eval "$(thefuck --alias fuck)"
-alias f=fuck
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-#PROMPT='%B%m%~%b$(git_super_status) %# '
-#PROMPT="%{[36;1m%}%T %{[31m%}%n%{[33m%}@%{[37m%}%m %{[32m%}%~ %{[33m%}%#%{[0m%} "
-#PROMPT='%{[36;1m%}%T %{[31m%}%n%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-if [ $USER = "vic" ]
-then
-  _USERNAME=🦄
-else
-  _USERNAME="%n"
-fi
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-issue=`cat /etc/issue`
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-if [[ $issue == *Manjaro* || $issue == *Arch* ]];
-then
-  _ATCOL=[35m%
-else
-  _ATCOL=[34m%
-fi
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
-#PROMPT="%{[36;1m%}%T %{[31m%}$_USERNAME%{[33m%}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} "
-PROMPT='%{[36;1m%}%T %{[31m%}$_USERNAME%{$_ATCOL}@%{[37m%}%m %{[32m%}%~%{[0m%} $(git_super_status)%{[33;1m%}%#%{[0m%} '
-# To allow overwriting with redirections
-setopt clobber
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-# Commands starting with a space will not be saved in history
-setopt histignorespace
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
-# For autocompletion from history with arrows
-HISTSIZE=500
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-alias ipy="ipython"
-alias ipy3="ipython3 --profile=dev"
-alias sipy3="screen -S ipy3 ipy3"
+# Uncomment the following line to disable auto-setting terminal title.
+DISABLE_AUTO_TITLE="true"
 
-alias ":q"="exit"
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
 
-alias ls='ls -h --color'
-alias ll='ls -l'
-alias lla='ls -la'
-alias la='ls -a'
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
 
-alias LS='sl'
-alias l='sl'
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-alias du='du -h'
-alias df='df -h'
-#alias cp='cp -i'
-#alias mv='mv -i'
-#alias rm='rm -i'
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
 
-alias py='python'
-alias py3='python3'
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-alias c='clear'
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  sudo
+  git-prompt
+  screen
+  web-search
+  command-not-found
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
 
-alias dfc='dfc -p -/dev/loop,tmpfs,udev'
+source $ZSH/oh-my-zsh.sh
 
-# Correspondance touches-fonction
-bindkey ''    beginning-of-line       # Home
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[H"  beginning-of-line
-bindkey ''    end-of-line             # End
-bindkey "\e[4~" end-of-line
-bindkey "\e[F"  end-of-line
-bindkey ''    delete-char             # Del
-bindkey '[3~' delete-char
-bindkey '[2~' overwrite-mode          # Insert
-bindkey '[5~' history-search-backward # PgUp
-bindkey '[6~' history-search-forward  # PgDn
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+# User configuration
 
-# Prise en charge des touches [début], [fin] et autres
-typeset -A key
+# export MANPATH="/usr/local/man:$MANPATH"
 
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Insert]=${terminfo[kich1]}
-key[Delete]=${terminfo[kdch1]}
-key[Up]=${terminfo[kcuu1]}
-key[Down]=${terminfo[kcud1]}
-key[Left]=${terminfo[kcub1]}
-key[Right]=${terminfo[kcuf1]}
-key[PageUp]=${terminfo[kpp]}
-key[PageDown]=${terminfo[knp]}
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
-[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
-[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
-[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
-[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
-[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
-[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# Quand l'utilisateur commence sa commande par '!' pour faire de la
-# complétion historique, il n'exécute pas la commande immédiatement
-# mais il écrit la commande dans le prompt
-setopt hist_verify
-
-# Nombre d'entrées dans l'historique
-export HISTORY=1000
-export SAVEHIST=1000
-
-# Fichier où est stocké l'historique
-export HISTFILE=$HOME/.history
-
-# Autocomplétion
-
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}'
-zstyle ':completion:*' max-errors 3 numeric
-zstyle ':completion:*' use-compctl false
-
-autoload -U compinit
-compinit
-
-command_not_found_handler () {
-    local INSULTS=(
-        "Boooo !"
-        "Don't you know anything ?"
-        "I will leave you a minute to let you think about what you just did"
-        "RTFM !"
-        "Hahaha, n00b !"
-        "Wow! That was impressively wrong !"
-        "What are you doing ??"
-        "Pathetic"
-        "The worst one today !"
-        "n00b alert !"
-        "lol"
-        "You failed me 💔"
-        ":("
-        "I hope no one is seeing this..."
-        "It is so embarrassing"
-        "Wow, you suck !"
-        "lol... plz"
-        "plz uninstall"
-        "And the Darwin Award goes to.... ${USER} !"
-        "ERROR_INCOMPETENT_USER"
-        "Incompetence is also competence"
-        "Bad."
-        "Fake it till you make it!"
-        "What is this ? Amateur hour !?"
-        "Come on! You can do it !"
-        "Nice try."
-        "What if... you type an actual command the next time !"
-        "What if I told you... it is possible to type valid commands."
-        "Y u no speak computer ???"
-        "This is not Windows"
-        "Perhaps you should leave the command line alone..."
-        "Please step away from the keyboard !"
-        "error code: 1D10T"
-        "Pro tip: type a valid command !"
-        "Go outside."
-        "Go sit by a lake"
-        "Wait... What ?"
-        "At least you tried"
-        "Why me ? 😢"
-        "🤔"
-        "U tried 😕"
-        "Dude, WTF ?"
-        "Are you sure you are qualified to use computers ?"
-        "Take a deep breath and try again"
-        "Maybe you should lie down for a few minutes"
-        "You should press the buttons in the correct order"
-        "This is not a search engine."
-        "So, I'm just going to go ahead and run rm -rf / for you."
-        "Why are you so stupid?!"
-        "Perhaps computers are not for you..."
-        "Why are you doing this to me ?!"
-        "Don't you have anything better to do ?!"
-        "I am _seriously_ considering 'rm -rf /'-ing myself..."
-        "This is why nobody likes you."
-        "Are you even trying ?!"
-    )
-
-    /usr/lib/command-not-found --no-failure-msg -- ${1+"$1"}
-    printf "$(tput bold)$(tput setaf 1)$(shuf -n 1 -e "${INSULTS[@]}")$(tput sgr0)"
-    echo ""
-    # Return the exit code normally returned on invalid command
-    return 127
-}
-
-source /etc/zsh_command_not_found
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
