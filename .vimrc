@@ -105,3 +105,13 @@ noremap <C-Up> ?^##<CR>
 map <C-c><C-x> ms/##<CR>VN<C-c><C-c>
 " To execute the whole file
 map <C-c><C-w> msggVG<C-c><C-c>
+
+
+function CompileLatex()
+  !(pdflatex % && bibtex %:r && pdflatex % && pdflatex %)
+endfunction
+
+noremap <F7> :call CompileLatex()<CR>
+
+
+let g:languagetool_jar = "/home/vic/projects/LanguageTool-4.9/languagetool-commandline.jar"
