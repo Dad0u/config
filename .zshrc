@@ -4,6 +4,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/vic/.oh-my-zsh"
 
+OPEN_SCREEN_SSH=true
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -77,6 +79,11 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
+
+if $OPEN_SCREEN_SSH && [ -z "$STY" ] && [ -n "$SSH_TTY" ]; then
+  #echo "Should start a screen session..."
+  screen -q
+fi
 
 source $ZSH/oh-my-zsh.sh
 
