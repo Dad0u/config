@@ -75,7 +75,7 @@ plugins=(
   git-prompt
   screen
   web-search
-  command-not-found
+  mycnf
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
