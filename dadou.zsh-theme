@@ -25,7 +25,9 @@ if [ -z "$STY" ]
 then
   _PROMPT_SCREEN=""
 else
-  _PROMPT_SCREEN="%{$bg[green]%}📺${STY%%.*}%{$reset_color%}"
+  _SCREEN_NAME="${STY#*.}" # Removing the number at the beggining
+  _SCREEN_NAME="${_SCREEN_NAME%.*}" # Removing the host at the end (if present)
+  _PROMPT_SCREEN="%{$bg[green]%}📺$_SCREEN_NAME%{$reset_color%}"
 fi
 
 _PROMPT_END="%{$fg_bold[yellow]%}>%{$reset_color%} "
