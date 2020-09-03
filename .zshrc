@@ -116,3 +116,12 @@ setopt histignorespace
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ipy3="ipython3 --profile=crappy"
+alias py3="python3"
+alias ":q"="exit"
+alias dfc="dfc -p -/dev/loop,tmpfs,udev"
+
+# virtualenv and virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
