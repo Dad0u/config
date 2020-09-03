@@ -16,6 +16,12 @@ else
   _HOSTCOLOR=$fg[green]
 fi
 
+if [ -n "$SSH_TTY" ]; then
+  _PROMPT_SSH_NOTIFIER='⚡'
+else
+  _PROMPT_SSH_NOTIFIER=''
+fi
+
 #_PROMPT_TIME="[%{$fg[blue]%}%*%{$reset_color%}]"
 _PROMPT_TIME="%{$fg[white]$bg[blue]%}%*%{$reset_color%}"
 
@@ -32,6 +38,6 @@ fi
 
 _PROMPT_END="%{$fg_bold[yellow]%}>%{$reset_color%} "
 
-PROMPT='$_PROMPT_TIME$_PROMPT_CORE$_PROMPT_SCREEN$(git_super_status)$_PROMPT_END'
+PROMPT='$_PROMPT_SSH_NOTIFIER$_PROMPT_TIME$_PROMPT_CORE$_PROMPT_SCREEN$(git_super_status)$_PROMPT_END'
 #RPROMPT=''
 #RPROMPT='$(git_super_status)'
