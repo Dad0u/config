@@ -25,7 +25,7 @@ if [ -z "$STY" ]
 then
   _PROMPT_SCREEN=""
 else
-  _PROMPT_SCREEN="%{$bg[green]%}📺%{${STY%%.*}$reset_color%}"
+  _PROMPT_SCREEN="%{$bg[green]%}📺${STY%%.*}%{$reset_color%}"
 fi
 
 _PROMPT_END="%{$fg_bold[yellow]%}>%{$reset_color%} "
