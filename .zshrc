@@ -85,6 +85,7 @@ if $OPEN_SCREEN_SSH && [ -z "$STY" ] && [ -n "$SSH_TTY" ]; then
   screen -q
 fi
 
+DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
