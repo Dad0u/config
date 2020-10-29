@@ -25,7 +25,7 @@ fi
 #_PROMPT_TIME="[%{$fg[blue]%}%*%{$reset_color%}]"
 _PROMPT_TIME="%{$fg[white]$bg[blue]%}%*%{$reset_color%}"
 
-_PROMPT_CORE="$_USERNAME%{$fg_bold[magenta]%}@%{$_HOSTCOLOR%}%m%{$reset_color%}%~"
+_PROMPT_CORE="$_USERNAME%{$fg_bold[magenta]%}@%{$_HOSTCOLOR%}%m%{$reset_color%}%2~"
 
 if [ -z "$STY" ]
 then
