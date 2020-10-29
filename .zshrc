@@ -75,9 +75,11 @@ plugins=(
   git-prompt
   screen
   web-search
+  command-time
   mycnf
   zsh-syntax-highlighting
   zsh-autosuggestions
+  bgnotify
 )
 
 if $OPEN_SCREEN_SSH && [ -z "$STY" ] && [ -n "$SSH_TTY" ]; then
