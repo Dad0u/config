@@ -9,6 +9,7 @@ set shiftwidth=2
 set smarttab
 set background=light
 set wrap lbr
+autocmd FileType tex,text,plaintext setlocal tw=79
 " To move one line when lines are wrapped
 " nnoremap <Down> gj
 " nnoremap <Up> gk
@@ -112,6 +113,7 @@ function CompileLatex()
 endfunction
 
 noremap <F7> :call CompileLatex()<CR>
+noremap <F2> :set spell!<CR>
 
 
 let g:languagetool_jar = "/home/vic/projects/LanguageTool-4.9/languagetool-commandline.jar"
