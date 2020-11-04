@@ -78,8 +78,8 @@ endfunction
 
 nnoremap <C-h> :call Toggle_hex()<CR>
 
-nnoremap <C-x> :lnext<CR>
-nnoremap <C-s> :lprevious<CR>
+nnoremap <C-n> :lnext<CR>
+nnoremap <C-k> :lprevious<CR>
 nnoremap <C-j> :ALEToggle<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
