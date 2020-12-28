@@ -124,6 +124,7 @@ alias ipy3="ipython3 --profile=crappy"
 alias py3="python3"
 alias ":q"="exit"
 alias dfc="dfc -p -/dev/loop,tmpfs,udev"
+alias c="clear"
 
 # virtualenv and virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
