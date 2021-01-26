@@ -115,5 +115,9 @@ endfunction
 noremap <F7> :call CompileLatex()<CR>
 noremap <F2> :set spell!<CR>
 
+" Change misspelled word color
+hi clear SpellBad
+hi SpellBad ctermbg=3
+
 
 let g:languagetool_jar = "/home/vic/projects/LanguageTool-4.9/languagetool-commandline.jar"
