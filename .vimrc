@@ -28,7 +28,7 @@ inoremap <End> <C-o>g<End>
 " To highlight searched words
 set hlsearch
 "" To let F3 toggle this option
-nnoremap <F3> :set hlsearch!<CR>
+nnoremap <F3> :nohl<CR>
 nnoremap <F5> :windo o<CR>
 nnoremap <F1> <NOP>
 " Show a line at column 80 for PEP8 convention
