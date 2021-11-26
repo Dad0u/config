@@ -1,7 +1,7 @@
 execute pathogen#infect()
 syntax on
 set mouse=a
-set number
+set number relativenumber
 set expandtab
 set tabstop=2
 set autoindent
@@ -10,6 +10,8 @@ set smarttab
 set background=light
 set wrap lbr
 autocmd FileType tex,text,plaintext setlocal tw=79
+" Auto warp test to 80 characters without manually using gq}
+autocmd FileType tex,text,plaintext setlocal fo=tcqa
 " To move one line when lines are wrapped
 " nnoremap <Down> gj
 " nnoremap <Up> gk
@@ -113,11 +115,15 @@ function CompileLatex()
 endfunction
 
 noremap <F7> :call CompileLatex()<CR>
+noremap <F8> :!make<CR>
 noremap <F2> :set spell!<CR>
 
 " Change misspelled word color
 hi clear SpellBad
 hi SpellBad ctermbg=3
 
+" Blocks of more than one % or any block not starting with % or \
+" (useful for latex)
+set foldexpr=getline(v:lnum-1)=~'^%'&&getline(v:lnum)=~'^%'\|\|getline(v:lnum)=~'^[^%\\\\]'
 
 let g:languagetool_jar = "/home/vic/projects/LanguageTool-4.9/languagetool-commandline.jar"
