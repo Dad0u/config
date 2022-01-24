@@ -11,7 +11,7 @@ set background=light
 set wrap lbr
 autocmd FileType tex,text,plaintext setlocal tw=79
 " Auto warp test to 80 characters without manually using gq}
-autocmd FileType tex,text,plaintext setlocal fo=tcqa
+autocmd FileType tex,text,plaintext setlocal fo=tcq
 " To move one line when lines are wrapped
 " nnoremap <Down> gj
 " nnoremap <Up> gk
