@@ -2,9 +2,9 @@ syntax on
 set mouse=a
 set number relativenumber
 set expandtab
-set tabstop=2
+set tabstop=4
 set autoindent
-set shiftwidth=2
+set shiftwidth=4
 set smarttab
 set background=light
 set wrap lbr
@@ -52,9 +52,9 @@ filetype plugin on
 filetype plugin indent on
 " Reset some default values in pyflakes
 autocmd FileType make setlocal noexpandtab
-autocmd FileType python setlocal tabstop=2
-autocmd FileType python setlocal softtabstop=2
-autocmd FileType python setlocal shiftwidth=2
+autocmd FileType python setlocal tabstop=4
+autocmd FileType python setlocal softtabstop=4
+autocmd FileType python setlocal shiftwidth=4
 
 " Color cuh file like c files
 autocmd BufNewFile,BufRead *.cuh set filetype=c
