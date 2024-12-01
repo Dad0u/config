@@ -8,8 +8,8 @@ else
 
 fi
 
-issue=`cat /etc/issue`
-if [[ $issue == *Manjaro* || $issue == *Arch* ]];
+source /etc/os-release
+if [[ $ID_LIKE == "arch" ]]
 then
   _HOSTCOLOR=$fg[blue]
 else
