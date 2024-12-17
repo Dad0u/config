@@ -9,7 +9,7 @@ else
 fi
 
 source /etc/os-release
-if [[ $ID_LIKE == "arch" ]]
+if [[ $ID_LIKE == "arch" || $ID == "arch" ]]
 then
   _HOSTCOLOR=$fg[blue]
 else
