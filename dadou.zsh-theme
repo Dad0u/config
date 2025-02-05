@@ -9,9 +9,10 @@ else
 fi
 
 source /etc/os-release
-if [[ $ID_LIKE == "arch" || $ID == "arch" ]]
-then
+if [[ $ID_LIKE == "arch" || $ID == "arch" ]]; then
   _HOSTCOLOR=$fg[blue]
+elif [[ $ID == "freebsd" ]]; then
+  _HOSTCOLOR=$fg[red]
 else
   _HOSTCOLOR=$fg[green]
 fi
